@@ -24,21 +24,9 @@
 
 <h2 class="h2 page-header">Работа с застрахованными водителями</h2>
 
-
-<p> Пожалуйста, выберите из списка водителя: </p>
-<br>
-
-<dropdown-list data-items-list="itemsList" data-search-result="result"
-               data-placeholder="ФИО водителя"></dropdown-list>
-<br>
-<button type="button" class="btn btn-primary" ng-click="addItem(result)">Добавить</button>
-<br>
-<br>
-<br>
-        <button type="button" class="btn btn-success" ng-click="load()">Синхронизация ...</button>
-
-
 <div class="row">
+
+
     <article class="col-md-8 col-lg-9">
         <div class="panel panel-info">
             <div class="panel-heading">Список отобранных водителей:</div>
@@ -101,6 +89,30 @@
     </aside>
 </div>
 
+        <div class="row">
+            <div class="panel panel-info">
+                <div class="panel-heading">Выбор водителей:</div>
+                <div class="panel-body">
+
+
+                <div class="col-md-4 col-lg-6">
+                <p> Пожалуйста, выберите из списка водителя: </p>
+                <br>
+                <dropdown-list data-items-list="itemsList" data-search-result="result"
+                               data-placeholder="ФИО водителя"></dropdown-list>
+            </div>
+            <div class="col-md-4 col-lg-3">
+                <br>
+                <button type="button" class="btn btn-primary" ng-click="addItem(result)">Добавить в список</button>
+                <br>
+            </div>
+            <div class="col-md-4 col-lg-3">
+                <br>
+                <button type="button" class="btn btn-success" ng-click="load()">Синхронизация c БД</button>
+                <br>
+            </div>
+                </div>
+        </div>
 
 
 
