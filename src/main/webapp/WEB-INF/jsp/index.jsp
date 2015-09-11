@@ -9,76 +9,103 @@
           href="http://localhost:8080/${pageContext.request.contextPath}/resources/css/style.css">
     <link rel="stylesheet" type="text/css"
           href="http://localhost:8080/${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="http://localhost:8080/${pageContext.request.contextPath}/resources/css/bootstrap-theme.min.css">
+
     <script src="http://localhost:8080/${pageContext.request.contextPath}/resources/js/bootstrap.min.js"
             type="text/javascript"></script>
+    <script src="http://localhost:8080/${pageContext.request.contextPath}/resources/js/jquery-1.11.1.min.js"
+            type="text/javascript"></script>
+
 </head>
 <body>
+<div class="container">
+    <div ng-app="app" ng-controller="mainCtrl">
+
+<h2 class="h2 page-header">Работа с застрахованными водителями</h2>
+
+
+<p> Пожалуйста, выберите из списка водителя: </p>
+<br>
+
+<dropdown-list data-items-list="itemsList" data-search-result="result"
+               data-placeholder="ФИО водителя"></dropdown-list>
+<br>
+<button type="button" class="btn btn-primary" ng-click="addItem(result)">Добавить</button>
 <br>
 <br>
-
-<div ng-app="app" ng-controller="mainCtrl">
-    <h3 class="page-header"> Список отобранных водителей: </h3>
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th>ФИО</th>
-            <th>Дата рождения</th>
-            <th>Возраст</th>
-            <th>Пол</th>
-            <th>Класс</th>
-            <th>Редактировать*</th>
-            <th>Удалить*</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="item in list.items">
-            <td>{{item.fio}}</td>
-            <td>{{item.birthday}}</td>
-            <td>{{item.age}}</td>
-            <td>{{item.sex}}</td>
-            <td>{{item.classdriver}}</td>
-            <td>
-                <button class="btn btn-default" ng-click="editItem(item)">Редактировать</button>
-            </td>
-            <td>
-                <button class="btn btn-default" ng-click="remove($index);">Удалить</button>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-
-    <button ng-click="load()">Загрузить</button>
-
-    <p> Пожалуйста, выберите из списка водителя: </p>
-    <br>
-
-    <dropdown-list data-items-list="itemsList" data-search-result="result"
-                   data-placeholder="ФИО водителя"></dropdown-list>
-    <br>
-    <button class="btn btn-default" ng-click="addItem(result)">Добавить</button>
-    <br>
-    <br>
-
-    <p>Редактирование данных о водителе</p>
-    <br>
-
-    <p><label for="fio">ФИО водителя: </label><input id="fio" ng-model="fio"/></p>
-
-    <p><label for="birthday">Дата рождения: </label><input id="birthday" ng-model="birthday"/></p>
-
-    <p><label for="age">Возраст: </label><input id="age" ng-model="age"/></p>
-
-    <p><label for="sex">Пол: </label><input id="sex" ng-model="sex"/></p>
-
-    <p><label for="classdriver">Класс: </label><input id="classdriver" ng-model="classdriver"/></p>
-    <br>
-    <br>
-    <button class="btn btn-default" ng-click="saveDriver()">Сохранить</button>
-    <br>
+<br>
+        <button type="button" class="btn btn-success" ng-click="load()">Синхронизация ...</button>
 
 
-    <br>
+<div class="row">
+    <article class="col-md-8 col-lg-9">
+        <div class="panel panel-info">
+            <div class="panel-heading">Список отобранных водителей:</div>
+            <div class="panel-body">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>ФИО</th>
+                        <th>Дата рождения</th>
+                        <th>Возраст</th>
+                        <th>Пол</th>
+                        <th>Класс</th>
+                        <th>Редактировать*</th>
+                        <th>Удалить*</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in list.items">
+                        <td>{{item.fio}}</td>
+                        <td>{{item.birthday}}</td>
+                        <td>{{item.age}}</td>
+                        <td>{{item.sex}}</td>
+                        <td>{{item.classdriver}}</td>
+                        <td>
+                            <button type="button" class="btn btn-primary btn-xs" ng-click="editItem(item)">
+                                Редактировать
+                            </button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-danger btn-xs" ng-click="remove($index);">
+                                Удалить
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </article>
+    <aside class="col-md-4 col-lg-3">
+        <div class="panel panel-danger">
+            <div class="panel-heading"><p>Редактирование данных о водителе</p></div>
+            <div class="panel-body">
+                <p><label for="fio">ФИО водителя: </label><input id="fio" ng-model="fio"/></p>
 
+                <p><label for="birthday">Дата рождения: </label><input id="birthday" ng-model="birthday"/></p>
+
+                <p><label for="age">Возраст: </label><input id="age" ng-model="age"/></p>
+
+                <p><label for="sex">Пол: </label><input id="sex" ng-model="sex"/></p>
+
+                <p><label for="classdriver">Класс: </label><input id="classdriver" ng-model="classdriver"/></p>
+                <br>
+                <br>
+                <button type="button" class="btn btn-warning" ng-click="saveDriver()">Записать в БД</button>
+                <br>
+
+            </div>
+        </div>
+    </aside>
+</div>
+
+
+
+
+
+</div>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.min.js"></script>
