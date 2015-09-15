@@ -11,152 +11,163 @@
           href="http://localhost:8080/${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css"
           href="http://localhost:8080/${pageContext.request.contextPath}/resources/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="http://localhost:8080/${pageContext.request.contextPath}/resources/css/bootstrap-datetimepicker.min.css">
 
     <script src="http://localhost:8080/${pageContext.request.contextPath}/resources/js/bootstrap.min.js"
             type="text/javascript"></script>
     <script src="http://localhost:8080/${pageContext.request.contextPath}/resources/js/jquery-1.11.1.min.js"
             type="text/javascript"></script>
+    <script src="http://localhost:8080/${pageContext.request.contextPath}/resources/js/moment-with-locales.min.js"
+            type="text/javascript"></script>
+    <script src="http://localhost:8080/${pageContext.request.contextPath}/resources/js/bootstrap-datetimepicker.min.js"
+            type="text/javascript"></script>
+
 
 </head>
 <body>
 <div class="container">
     <div ng-app="app" ng-controller="mainCtrl">
 
-<h2 class="h2 page-header">Работа с застрахованными водителями</h2>
+         <h2 class="h2 page-header">Работа с застрахованными водителями</h2>
 
-<div class="row">
+         <div class="row">
 
 
-    <article class="col-md-8 col-lg-9">
-        <div class="panel panel-info">
-            <div class="panel-heading">Список отобранных водителей:</div>
-            <div class="panel-body">
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th>ФИО</th>
-                        <th>Дата рождения</th>
-                        <th>Возраст</th>
-                        <th>Пол</th>
-                        <th>Класс</th>
-                        <th>Редактировать*</th>
-                        <th>Удалить*</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr ng-repeat="item in list.items">
-                        <td>{{item.fio}}</td>
-                        <td>{{item.birthday}}</td>
-                        <td>{{item.age}}</td>
-                        <td>{{item.sex}}</td>
-                        <td>{{item.classdriver}}</td>
-                        <td>
-                            <button type="button" class="btn btn-primary btn-xs" ng-click="editItem(item)">
-                                Редактировать
-                            </button>
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-danger btn-xs" ng-click="remove($index);">
-                                Удалить
-                            </button>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
+            <article class="col-md-8 col-lg-9">
+                <div class="panel panel-info">
+                    <div class="panel-heading">Список отобранных водителей:</div>
+                    <div class="panel-body">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>ФИО</th>
+                                <th>Дата рождения</th>
+                                <th>Возраст</th>
+                                <th>Пол</th>
+                                <th>Класс</th>
+                                <th>Редактировать*</th>
+                                <th>Удалить*</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="item in list.items">
+                                <td>{{item.fio}}</td>
+                                <td>{{item.birthDay}}</td>
+                                <td>{{item.age}}</td>
+                                <td>{{item.sex}}</td>
+                                <td>{{item.classDriver}}</td>
+                                <td>
+                                    <button type="button" class="btn btn-primary btn-xs" ng-click="editItem(item)">
+                                        Редактировать
+                                    </button>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-danger btn-xs" ng-click="remove($index);">
+                                        Удалить
+                                    </button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </article>
+            <aside class="col-md-4 col-lg-3">
+                <div class="panel panel-danger">
+                    <div class="panel-heading"><p>Редактирование данных о водителе</p></div>
+                    <div class="panel-body">
+                        <p><label for="fio">ФИО водителя: </label><input id="fio" class="form-control" ng-model="fio"/></p>
+
+                        <p><label for="datetimepicker6">Дата рождения: </label><input id="datetimepicker6" ng-model="birthDay"/></p>
+
+                        <p><label for="age">Возраст: </label><input id="age" ng-model="age"/></p>
+
+                        <p><label for="sex">Пол: </label><input id="sex" ng-model="sex"/></p>
+
+                        <p><label for="classDriver">Класс: </label><input id="classDriver" ng-model="classDriver"/></p>
+                        <br>
+                        <br>
+                        <button type="button" class="btn btn-warning" ng-click="saveDriver()">Записать в БД</button>
+                        <br>
+
+                    </div>
+                </div>
+            </aside>
         </div>
-    </article>
-    <aside class="col-md-4 col-lg-3">
-        <div class="panel panel-danger">
-            <div class="panel-heading"><p>Редактирование данных о водителе</p></div>
-            <div class="panel-body">
-                <p><label for="fio">ФИО водителя: </label><input id="fio" ng-model="fio"/></p>
-
-                <p><label for="birthday">Дата рождения: </label><input id="birthday" ng-model="birthday"/></p>
-
-                <p><label for="age">Возраст: </label><input id="age" ng-model="age"/></p>
-
-                <p><label for="sex">Пол: </label><input id="sex" ng-model="sex"/></p>
-
-                <p><label for="classdriver">Класс: </label><input id="classdriver" ng-model="classdriver"/></p>
-                <br>
-                <br>
-                <button type="button" class="btn btn-warning" ng-click="saveDriver()">Записать в БД</button>
-                <br>
-
-            </div>
-        </div>
-    </aside>
-</div>
 
         <div class="row">
             <div class="panel panel-info">
-                <div class="panel-heading">Выбор водителей:</div>
+                <div class="panel-heading">Поиск водителей в БД:</div>
                 <div class="panel-body">
-
-
-                <div class="col-md-4 col-lg-6">
-                <p> Пожалуйста, выберите из списка водителя: </p>
-                <br>
-                <dropdown-list data-items-list="itemsList" data-search-result="result"
+                    <div class="col-md-4 col-lg-6">
+                        <p> Пожалуйста, выберите из списка водителя: </p>
+                        <br>
+                        <dropdown-list data-items-list="itemsList" data-search-result="result"
                                data-placeholder="ФИО водителя"></dropdown-list>
-            </div>
-            <div class="col-md-4 col-lg-3">
-                <br>
-                <button type="button" class="btn btn-primary" ng-click="addItem(result)">Добавить в список</button>
-                <br>
-            </div>
-            <div class="col-md-4 col-lg-3">
-                <br>
-                <button type="button" class="btn btn-success" ng-click="load()">Синхронизация c БД</button>
-                <br>
-            </div>
+                    </div>
+                    <div class="col-md-4 col-lg-3">
+                        <br>
+                        <button type="button" class="btn btn-primary" ng-click="addItem(result)">Добавить в список</button>
+                        <br>
+                    </div>
+                    <div class="col-md-4 col-lg-3">
+                        <br>
+                        <button type="button" class="btn btn-success" ng-click="load()">Синхронизация c БД</button>
+                        <br>
+                    </div>
                 </div>
+            </div>
         </div>
 
-
-
-
-</div>
+    </div>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        //Установим для виджета русскую локаль с помощью параметра language и значения ru
+        $('#datetimepicker6').datetimepicker(
+                {language: 'ru'}
+        );
+    });
+</script>
 <script>
     var model = {
         items: [
             {
                 fio: "Самсонов Игорь Юрьевич",
-                birthday: "19.04.1978",
+                birthDay: "19.04.1978",
                 age: 35,
                 sex: "М",
-                classdriver: 4,
+                classDriver: 4,
                 buttonedit: 2,
                 buttondel: 1
             },
             {
                 fio: "Петров Кирилл Павлович",
-                birthday: "05.08.1966",
+                birthDay: "05.08.1966",
                 age: 35,
                 sex: "М",
-                classdriver: 4,
+                classDriver: 4,
                 buttonedit: 2,
                 buttondel: 1
             },
             {
                 fio: "Сидоров Андрей Игоревич",
-                birthday: "23.09.1985",
+                birthDay: "23.09.1985",
                 age: 35,
                 sex: "М",
-                classdriver: 4,
+                classDriver: 4,
                 buttonedit: 2,
                 buttondel: 1
             },
             {
                 fio: "Козлов Александр Александрович",
-                birthday: "14.06.1978",
+                birthDay: "14.06.1978",
                 age: 35,
                 sex: "М",
-                classdriver: 4,
+                classDriver: 4,
                 buttonedit: 2,
                 buttondel: 1
             }
@@ -203,19 +214,19 @@
         $scope.addItem = function (result) {
             $scope.list.items.push({
                 fio: result.fio,
-                birthday: result.birthday,
+                birthDay: result.birthDay,
                 age: result.age,
                 sex: result.sex,
-                classdriver: result.classdriver
+                classDriver: result.classDriver
             });
 
         }
         $scope.editItem = function (item) {
             $scope.fio = item.fio;
-            $scope.birthday = item.birthday;
+            $scope.birthDay = item.birthDay;
             $scope.age = item.age;
             $scope.sex = item.sex;
-            $scope.classdriver = item.classdriver;
+            $scope.classDriver = item.classDriver;
         }
 
         $scope.remove = function (index) {
@@ -226,10 +237,10 @@
 
             $scope.driver = {
                 fio: $scope.fio,
-                birthday: $scope.birthday,
+                birthDay: $scope.birthDay,
                 age: $scope.age,
                 sex: $scope.sex,
-                classdriver: $scope.classdriver
+                classDriver: $scope.classDriver
             }
             $scope.resjson = angular.toJson($scope.driver);
             var req = {
@@ -263,10 +274,10 @@
                         searchResult: '=',
                         placeholder: '@'
                     },
-                    template: '<input type="text" ng-model="search" placeholder="{{ placeholder }}" />' +
+                    template: '<input type="text" size="15" class="form-control" ng-model="search" placeholder="{{ placeholder }}" />' +
                     '<div class="search-item-list"><ul class="list">' +
                     '<li ng-repeat="item in itemsList | filter:search" ng-click="chooseItem( item )">{{ item.fio }}' +
-                    '<span class="amount">{{ item.birthday }}</span>' +
+                    '<span class="amount">{{ item.birthDay }}</span>' +
                     '</li>' +
                     '</ul></div>',
                     link: function (scope, el, attr) {

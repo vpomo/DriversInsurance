@@ -1,9 +1,6 @@
 package com.vpomo.driversinsurance.model;
-import java.io.Serializable;
-import java.text.SimpleDateFormat;
-import java.util.Date;
- 
 import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
 /**
  *
  * @author Pomogalov V.A.
@@ -16,17 +13,13 @@ public class Drivers implements Serializable{
     
     private String fio;
     
-    //@XmlAttribute(name = "birthday")
-    private String birthday;
+    private String birthDay;
 
-    //@XmlAttribute(name = "age")
     private Integer age;
     
-    //@XmlAttribute(name = "sex")
     private String sex;
     
-    //@XmlAttribute(name = "classdriver")
-    private String classdriver;
+    private String classDriver;
 
     public String getFio() {
         return fio;
@@ -36,12 +29,12 @@ public class Drivers implements Serializable{
         this.fio = fio;
     }
 
-    public String getBirthday() {
-        return this.birthday;         
+    public String getBirthDay() {
+        return this.birthDay;
     }
 
-    public void setBirthday(String birthday) {
-        this.birthday = birthday;
+    public void setBirthDay(String birthDay) {
+        this.birthDay = birthDay;
     }
 
     public Integer getAge() {
@@ -60,26 +53,26 @@ public class Drivers implements Serializable{
         this.sex = sex;
     }
 
-    public String getClassdriver() {
-        return classdriver;
+    public String getClassDriver() {
+        return classDriver;
     }
 
-    public void setClassdriver(String classDriver) {
-        this.classdriver = classDriver;
+    public void setClassDriver(String classDriver) {
+        this.classDriver = classDriver;
     }
  
     public Drivers(String fio, String birthDay, Integer age, String sex, String classDriver) {
     this.fio = fio;
-    this.birthday = birthDay;
+    this.birthDay = birthDay;
     this.age = age;
     this.sex = sex;
-    this.classdriver = classDriver;
+    this.classDriver = classDriver;
 
     }
 
     @Override
     public String toString() {
-        return "Drivers{" + "fio=" + fio + ", birthday=" + birthday + ", age=" + age + ", sex=" + sex + ", classdriver=" + classdriver + '}';
+        return "Drivers{" + "fio=" + fio + ", birthDay=" + birthDay + ", age=" + age + ", sex=" + sex + ", classDriver=" + classDriver + '}';
     }
  
     public Drivers() {
