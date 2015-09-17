@@ -16,7 +16,7 @@
 
     <script src="http://localhost:8080/${pageContext.request.contextPath}/resources/js/bootstrap.min.js"
             type="text/javascript"></script>
-    <script src="http://localhost:8080/${pageContext.request.contextPath}/resources/js/jquery-1.11.1.min.js"
+    <script src="http://localhost:8080/${pageContext.request.contextPath}/resources/js/jquery-2.1.1.js"
             type="text/javascript"></script>
     <script src="http://localhost:8080/${pageContext.request.contextPath}/resources/js/moment-with-locales.min.js"
             type="text/javascript"></script>
@@ -79,13 +79,26 @@
                     <div class="panel-body">
                         <p><label for="fio">ФИО водителя: </label><input id="fio" class="form-control" ng-model="fio"/></p>
 
-                        <p><label for="datetimepicker6">Дата рождения: </label><input id="datetimepicker6" ng-model="birthDay"/></p>
+                        <p><label for="datetimepicker6">Дата рождения: </label><input id="datetimepicker6" ng-model="birthDay" ng-change="changeBirthDay()"/></p>
 
                         <p><label for="age">Возраст: </label><input id="age" ng-model="age"/></p>
 
-                        <p><label for="sex">Пол: </label><input id="sex" ng-model="sex"/></p>
+                        <p>
+                            <b>Пол:</b>
+                            <p>
+                            <label>мужчина<input type="radio" name="sex" id="man" value="М" ng-model="sex" checked/></label>
+                            <label>женщина<input type="radio" name="sex" id="women" value="Ж" ng-model="sex" /></label>
+                            </p>
+                        </p>
 
-                        <p><label for="classDriver">Класс: </label><input id="classDriver" ng-model="classDriver"/></p>
+                        <p><label for="classDriver">Класс: </label>
+                        <select id="classDriver" class="selectpicker" size="3" name="classDriver"  ng-model="classDriver">
+
+                            <option value="1">Первый</option>
+                            <option selected value="2">Второй</option>
+                            <option value="3">Третий</option>
+                        </select>
+                        </p>
                         <br>
                         <br>
                         <button type="button" class="btn btn-warning" ng-click="saveDriver()">Записать в БД</button>
@@ -126,9 +139,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.min.js"></script>
 <script type="text/javascript">
     $(function () {
-        //Установим для виджета русскую локаль с помощью параметра language и значения ru
-        $('#datetimepicker6').datetimepicker(
-                {language: 'ru'}
+              $('#datetimepicker6').datetimepicker(
+              {pickTime: false, viewMode: 'years', language: 'ru'}
         );
     });
 </script>
@@ -138,36 +150,36 @@
             {
                 fio: "Самсонов Игорь Юрьевич",
                 birthDay: "19.04.1978",
-                age: 35,
+                age: 37,
                 sex: "М",
-                classDriver: 4,
+                classDriver: 2,
                 buttonedit: 2,
                 buttondel: 1
             },
             {
                 fio: "Петров Кирилл Павлович",
                 birthDay: "05.08.1966",
-                age: 35,
+                age: 49,
                 sex: "М",
-                classDriver: 4,
+                classDriver: 1,
                 buttonedit: 2,
                 buttondel: 1
             },
             {
                 fio: "Сидоров Андрей Игоревич",
                 birthDay: "23.09.1985",
-                age: 35,
+                age: 30,
                 sex: "М",
-                classDriver: 4,
+                classDriver: 2,
                 buttonedit: 2,
                 buttondel: 1
             },
             {
                 fio: "Козлов Александр Александрович",
-                birthDay: "14.06.1978",
-                age: 35,
+                birthDay: "19.12.1969",
+                age: 45,
                 sex: "М",
-                classDriver: 4,
+                classDriver: 1,
                 buttonedit: 2,
                 buttondel: 1
             }
@@ -222,12 +234,22 @@
 
         }
         $scope.editItem = function (item) {
+            var currentDate = moment().format('YYYY-MM-DD');
+            var oldDate = moment(item.birthDay, ["DD.MM.YYYY","YYYY-MM-DD"]);
+            console.log($scope.birthDay);
+
             $scope.fio = item.fio;
             $scope.birthDay = item.birthDay;
-            $scope.age = item.age;
+            $scope.age = (-1)*oldDate.diff(currentDate, 'years');
             $scope.sex = item.sex;
             $scope.classDriver = item.classDriver;
         }
+
+        $scope.changeBirthDay = function () {
+            var currentDate = moment().format('YYYY-MM-DD');
+            var oldDate = moment($scope.birthDay, ["DD.MM.YYYY","YYYY-MM-DD"]);
+            $scope.age = (-1)*oldDate.diff(currentDate, 'years');
+	}
 
         $scope.remove = function (index) {
             $scope.list.items.splice(index, 1);
@@ -242,12 +264,12 @@
                 sex: $scope.sex,
                 classDriver: $scope.classDriver
             }
+
             $scope.resjson = angular.toJson($scope.driver);
             var req = {
                 method: 'POST',
                 url: 'http://localhost:8080/add',
                 headers: {'Content-Type': 'application/json; charset: UTF-8'},
-                //data:  'angular.toJson($scope.driver)'
                 data: angular.toJson($scope.driver)
             }
 
