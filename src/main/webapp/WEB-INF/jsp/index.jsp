@@ -92,12 +92,8 @@
                         </p>
 
                         <p><label for="classDriver">Класс: </label>
-                        <select id="classDriver" class="selectpicker" size="3" name="classDriver"  ng-model="classDriver">
+                        <select id="classDriver" ng-model="classDriver" ng-options="opt as opt for opt in classDriversArray" ng-init="selected='3'"></select>
 
-                            <option value="1">Первый</option>
-                            <option selected value="2">Второй</option>
-                            <option value="3">Третий</option>
-                        </select>
                         </p>
                         <br>
                         <br>
@@ -170,7 +166,7 @@
                 birthDay: "23.09.1985",
                 age: 30,
                 sex: "М",
-                classDriver: 2,
+                classDriver: 3,
                 buttonedit: 2,
                 buttondel: 1
             },
@@ -222,6 +218,7 @@
         }
 
         $scope.list = model;
+        $scope.classDriversArray = [1,2,3];
 
         $scope.addItem = function (result) {
             $scope.list.items.push({

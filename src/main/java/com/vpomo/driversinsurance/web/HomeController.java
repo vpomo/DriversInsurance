@@ -34,10 +34,10 @@ public class HomeController {
         queueDrivers.clear();
         queueDrivers.trimToSize();
 
-        Drivers obj1 = new Drivers("Иванов Геннадий Петрович", "19.12.1960", 55, "М", "1");
-        Drivers obj2 = new Drivers("Васильев Петр Сергеевич", "19.12.1964", 51, "М", "2");
-        Drivers obj3 = new Drivers("Харченко Иван Владимирович", "19.12.1982", 33, "М", "3");
-        Drivers obj4 = new Drivers("Суворов Александр Иванович", "29.03.1971", 44, "M", "2");
+        Drivers obj1 = new Drivers("Иванов Геннадий Петрович", "19.12.1960", 55, "М", 1);
+        Drivers obj2 = new Drivers("Васильев Петр Сергеевич", "19.12.1964", 51, "М", 2);
+        Drivers obj3 = new Drivers("Харченко Иван Владимирович", "19.12.1982", 33, "М", 3);
+        Drivers obj4 = new Drivers("Суворов Александр Иванович", "29.03.1971", 44, "M", 3);
         queueDrivers.add(obj1);
         queueDrivers.add(obj2);
         queueDrivers.add(obj3);

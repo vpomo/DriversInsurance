@@ -19,7 +19,7 @@ public class Drivers implements Serializable{
     
     private String sex;
     
-    private String classDriver;
+    private Integer classDriver;
 
     public String getFio() {
         return fio;
@@ -53,15 +53,15 @@ public class Drivers implements Serializable{
         this.sex = sex;
     }
 
-    public String getClassDriver() {
+    public Integer getClassDriver() {
         return classDriver;
     }
 
-    public void setClassDriver(String classDriver) {
+    public void setClassDriver(Integer classDriver) {
         this.classDriver = classDriver;
     }
  
-    public Drivers(String fio, String birthDay, Integer age, String sex, String classDriver) {
+    public Drivers(String fio, String birthDay, Integer age, String sex, Integer classDriver) {
     this.fio = fio;
     this.birthDay = birthDay;
     this.age = age;
