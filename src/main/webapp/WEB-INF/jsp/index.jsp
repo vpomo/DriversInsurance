@@ -95,8 +95,7 @@
                         <select id="classDriver" ng-model="classDriver" ng-options="opt as opt for opt in classDriversArray" ng-init="selected='3'"></select>
 
                         </p>
-                        <br>
-                        <br>
+                        <br><br>
                         <button type="button" class="btn btn-warning" ng-click="saveDriver()">Записать в БД</button>
                         <br>
 
@@ -132,7 +131,9 @@
     </div>
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.min.js"></script>
+<script src="http://localhost:8080/${pageContext.request.contextPath}/resources/js/angular.min.js"
+        type="text/javascript"></script>
+
 <script type="text/javascript">
     $(function () {
               $('#datetimepicker6').datetimepicker(
