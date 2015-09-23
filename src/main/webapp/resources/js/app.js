@@ -134,7 +134,12 @@ app.controller('mainCtrl', function ($scope, $http, dataService) {
                 //  Do some error handling here
             });
         console.log(angular.toJson($scope.driver))
-        $scope.load();
+
+        var promiseObj = dataService.getData();
+        promiseObj.then(function (value) {
+            $scope.itemsList = value;
+        });
+
     };
 
 })

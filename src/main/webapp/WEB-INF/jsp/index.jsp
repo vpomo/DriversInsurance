@@ -58,7 +58,7 @@
                                 <td>{{item.sex}}</td>
                                 <td>{{item.classDriver}}</td>
                                 <td>
-                                    <button type="button" class="btn btn-primary btn-xs" ng-click="editItem(item)">
+                                    <button type="button" class="btn btn-primary btn-xs" ng-click="editItem(item);remove($index)" >
                                         Редактировать
                                     </button>
                                 </td>
