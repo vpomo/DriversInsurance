@@ -116,7 +116,7 @@
                     </div>
                     <div class="col-md-4 col-lg-3">
                         <br>
-                        <button type="button" class="btn btn-primary" ng-click="addItem(result)">Добавить в список</button>
+                        <button type="button" class="btn btn-primary" ng-click="addItem(result)">Выбрать водителя</button>
                         <br>
                     </div>
                     <div class="col-md-4 col-lg-3">
