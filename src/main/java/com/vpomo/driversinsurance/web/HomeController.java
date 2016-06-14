@@ -78,7 +78,7 @@ public class HomeController {
         return driver;
     }
 
-    @RequestMapping(value = "/restful/getall", method = RequestMethod.GET)
+    @RequestMapping(value = "/getall", method = RequestMethod.GET)
     public @ResponseBody ArrayList<Drivers> getDriversAll() {
         return queueDrivers;
     }

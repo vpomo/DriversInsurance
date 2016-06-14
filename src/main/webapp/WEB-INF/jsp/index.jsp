@@ -6,21 +6,21 @@
 <head>
 
     <link rel="stylesheet" type="text/css"
-          href="http://localhost:8080/${pageContext.request.contextPath}/resources/css/style.css">
+          href="${pageContext.request.contextPath}/resources/css/style.css">
     <link rel="stylesheet" type="text/css"
-          href="http://localhost:8080/${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
+          href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css"
-          href="http://localhost:8080/${pageContext.request.contextPath}/resources/css/bootstrap-theme.min.css">
+          href="${pageContext.request.contextPath}/resources/css/bootstrap-theme.min.css">
     <link rel="stylesheet" type="text/css"
-          href="http://localhost:8080/${pageContext.request.contextPath}/resources/css/bootstrap-datetimepicker.min.css">
+          href="${pageContext.request.contextPath}/resources/css/bootstrap-datetimepicker.min.css">
 
-    <script src="http://localhost:8080/${pageContext.request.contextPath}/resources/js/bootstrap.min.js"
+    <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"
             type="text/javascript"></script>
-    <script src="http://localhost:8080/${pageContext.request.contextPath}/resources/js/jquery-2.1.1.js"
+    <script src="${pageContext.request.contextPath}/resources/js/jquery-2.1.1.js"
             type="text/javascript"></script>
-    <script src="http://localhost:8080/${pageContext.request.contextPath}/resources/js/moment-with-locales.min.js"
+    <script src="${pageContext.request.contextPath}/resources/js/moment-with-locales.min.js"
             type="text/javascript"></script>
-    <script src="http://localhost:8080/${pageContext.request.contextPath}/resources/js/bootstrap-datetimepicker.min.js"
+    <script src="${pageContext.request.contextPath}/resources/js/bootstrap-datetimepicker.min.js"
             type="text/javascript"></script>
 
 
@@ -131,9 +131,9 @@
     </div>
 </div>
 
-<script src="http://localhost:8080/${pageContext.request.contextPath}/resources/js/angular.min.js"
+<script src="${pageContext.request.contextPath}/resources/js/angular.min.js"
         type="text/javascript"></script>
-<script src="http://localhost:8080/${pageContext.request.contextPath}/resources/js/app.js"
+<script src="${pageContext.request.contextPath}/resources/js/app.js"
         type="text/javascript"></script>
 <script type="text/javascript">
     $(function () {

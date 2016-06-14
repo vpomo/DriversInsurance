@@ -44,7 +44,8 @@ app.factory('dataService', function ($http, $q) {
     return {
         getData: function () {
             var deferred = $q.defer();
-            $http({method: 'GET', url: 'http://localhost:8080/restful/getall/'}).
+            var getAllURL = "http://" + window.location.host + "/getall";
+            $http({method: 'GET', url: getAllURL}).
                 success(function (data, status, headers, config) {
                     deferred.resolve(data);
                 }).
@@ -120,9 +121,10 @@ app.controller('mainCtrl', function ($scope, $http, dataService) {
         }
 
         $scope.resjson = angular.toJson($scope.driver);
+        var addURL = "http://" + window.location.host + "/add";
         var req = {
             method: 'POST',
-            url: 'http://localhost:8080/add',
+            url: addURL,
             headers: {'Content-Type': 'application/json; charset: UTF-8'},
             data: angular.toJson($scope.driver)
         }
